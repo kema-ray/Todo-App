@@ -17,6 +17,8 @@ const CreateTask = ({ tasks, setTasks }) => {
         setTasks((prev) => {
             const list = [...prev, task];
 
+            localStorage.setItem("tasks", JSON.stringify(list));
+
             return list;
         });
     };
