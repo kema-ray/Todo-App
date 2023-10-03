@@ -15,7 +15,11 @@ const CreateTask = ({ tasks, setTasks }) => {
     const handleSubmit= (e) => {
         e.preventDefault();
 
-        if(task.name.length < 3) return toast.error("A task must have more than 3 characters")
+        if(task.name.length < 3) 
+        return toast.error("A task must have more than 3 characters")
+        
+        if(task.name.length > 150) 
+        return toast.error("A task must not be more than 150 characters")
 
         setTasks((prev) => {
             const list = [...prev, task];
@@ -24,6 +28,14 @@ const CreateTask = ({ tasks, setTasks }) => {
 
             return list;
         });
+
+        toast.success("Task created successfully")
+
+        setTask({
+            id:"",
+            name:"",
+            status:"todo"
+        })
     };
 
     return (
