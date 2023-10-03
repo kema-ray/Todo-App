@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { v4 as uuidv4 } from 'uuid';
 
 const CreateTask = ({ tasks, setTasks }) => {
@@ -13,6 +14,8 @@ const CreateTask = ({ tasks, setTasks }) => {
 
     const handleSubmit= (e) => {
         e.preventDefault();
+
+        if(task.name.length < 3) return toast.error("A task must have more than 3 characters")
 
         setTasks((prev) => {
             const list = [...prev, task];
