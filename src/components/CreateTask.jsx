@@ -11,8 +11,18 @@ const CreateTask = ({ tasks, setTasks }) => {
 
     console.log(task);
 
+    const handleSubmit= (e) => {
+        e.preventDefault();
+
+        setTasks((prev) => {
+            const list = [...prev, task];
+
+            return list;
+        });
+    };
+
     return (
-    <form>
+    <form onSubmit={handleSubmit}>
         <input type="text" className="border-2 border-slate-400 bg-slate100 rounded-md 
         mr-4 h-12 w-64 px-1"
         value={task.name}
