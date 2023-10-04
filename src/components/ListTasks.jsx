@@ -14,9 +14,23 @@ const ListTasks = ({ tasks, setTasks }) => {
         setTodos(filterTodos);
         setInProgress(filterInProgress);
         setCompleted(filterCompleted);
-    }, [tasks])
+    }, [tasks]);
 
-    return <div>List</div>;
+    const statuses = ["todo", "inprogress", "completed"]
+
+    return (
+        <div className="flex gap-16">
+            {statuses.map((status, index) => <Section key={index} status = {status} />)}
+        </div>
+    );
 }
 
 export default ListTasks;
+
+const Section = ({status}) => {
+    return (
+        <div>
+            <h2>{status}</h2> List
+        </div>
+    )
+}
