@@ -38,12 +38,25 @@ const ListTasks = ({ tasks, setTasks }) => {
 export default ListTasks;
 
 const Section = ({status, tasks, setTasks, todos, inProgress, completed}) => {
-    let text = "Todo"
-    let bg = "bg-slate-500"
+    let text = "Todo";
+    let bg = "bg-red-500";
+    let tasksToMap = todos;
+
+    if (status === "inprogress") {
+        text = "In Progress";
+        bg = "bg-purple-500";
+        tasksToMap = inProgress;
+    }
+
+    if (status === "completed") {
+        text = "completed";
+        bg = "bg-green-500";
+        tasksToMap = completed;
+    }
 
     return (
         <div className={`w-64`}>
-           <Header text={text} bg={bg} count={todos.length} /> List
+           <Header text={text} bg={bg} count={tasksToMap.length} /> List
         </div>
     )
 }
